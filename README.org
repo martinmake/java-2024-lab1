@@ -1,4 +1,4 @@
-#+title: Java 01
+#+title: Java 2024 lab1
 
 * Building
 #+begin_src sh
@@ -9,7 +9,7 @@ test -d ./build && unlink ./build; guix build --file=guix.scm --root=build
 Make sure to setup your CLASSPATH correctly!
 
 #+begin_src sh
-java -jar ./build/lib/m2/ru/spbstu/telematics/java/java-01/0.0.0/java-01-0.0.0.jar SOURCE... DESTINATION
+java -jar ./build/lib/m2/ru/spbstu/telematics/java/java-2024-lab1/0.0.0/java-2024-lab1-0.0.0.jar SOURCE... DESTINATION
 #+end_src
 
 or

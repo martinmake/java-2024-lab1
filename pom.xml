@@ -3,15 +3,15 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>ru.spbstu.telematics.java</groupId>
-  <artifactId>java-01</artifactId>
+  <artifactId>java-2024-lab1</artifactId>
   <version>0.0.0</version>
 
-  <name>java-01</name>
-  <url>https://www.github.com/martinmake/java-01</url>
+  <name>java-2024-lab1</name>
+  <url>https://www.github.com/martinmake/java-2024-lab1</url>
 
   <scm>
-    <url>https://github.com/martinmake/java-01</url>
-    <connection>scm:git:https://github.com/martinmake/java-01.git</connection>
+    <url>https://github.com/martinmake/java-2024-lab1</url>
+    <connection>scm:git:https://github.com/martinmake/java-2024-lab1.git</connection>
   </scm>
 
   <properties>

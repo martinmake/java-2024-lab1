@@ -1,4 +1,4 @@
-(define-module (java-01-package)
+(define-module (java-2024-lab1-package)
   #:use-module (guix)
   #:use-module (guix packages)
   #:use-module (guix utils)
@@ -16,11 +16,11 @@
   (or (git-predicate (dirname (dirname (current-source-directory))))
       (const #t)))
 
-(define-public java-01
+(define-public java-2024-lab1
   (package
-    (name "java-01")
+    (name "java-2024-lab1")
     (version "0.0.0")
-    (source (local-file "../.." "java-01-checkout"
+    (source (local-file "../.." "java-2024-lab1-checkout"
                         #:recursive? #t
                         #:select? vcs-file?))
     (build-system maven-build-system)
@@ -32,9 +32,9 @@
            java-commons-math3))
     (native-inputs
      (list java-junit maven-parent-pom-34))
-    (home-page "https://github.com/martinmake/java-01")
+    (home-page "https://github.com/martinmake/java-2024-lab1")
     (synopsis "...")
     (description "...")
     (license license:gpl3)))
 
-java-01
+java-2024-lab1
