@@ -1,0 +1,19 @@
+#+title: Java 01
+
+* Building
+#+begin_src sh
+test -d ./build && unlink ./build; guix build --file=guix.scm --root=build
+#+end_src
+
+* Runnig
+Make sure to setup your CLASSPATH correctly!
+
+#+begin_src sh
+java -jar ./build/lib/m2/ru/spbstu/telematics/java/java-01/0.0.0/java-01-0.0.0.jar SOURCE... DESTINATION
+#+end_src
+
+or
+
+#+begin_src sh
+java ru.spbstu.telematics.java.Main SOURCE... DESTINATION
+#+end_src

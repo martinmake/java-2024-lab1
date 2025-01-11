@@ -1,0 +1,93 @@
+h1. Отчёт по 1 лабораторной работе (Михалец Мартин)
+
+*Михалец Мартин, гр. 5130201/20102*
+
+
+h1. Задание
+
+Реализовать аналог unix команды mv.  Команда mv передвигает/переименовывает файлы.
+
+h1. Ход работы
+
+Apache Maven 3.9.0 (guix_build)
+OpenJDK
+
+Предварительно были установлены OpenJDK версии 17.0.10 и Apache Maven
+версии 3.9.0.  Версии можно проверить в логах сборки.
+
+# pom.xml файл пришлось писать вручную, так как Maven очень слабо поддерживается функциональным дистрибутивом GNU Guix.  Согласно комментарию преподавателя, в pom.xml была указана зависимость junit и добавлены библиотеки commons-io и commons-math:
+<pre>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+	  <groupId>commons-io</groupId>
+          <artifactId>commons-io</artifactId>
+          <version>2.5</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-math3</artifactId>
+        <version>3.6.1</version>
+    </dependency>
+</pre>
+# В файле ./src/main/java/ru/spbstu/telematics/java/Main.java был написан основной код, содержащий логику команды mv.
+# Для успешной компиляции проекта и создания jar файла, в pom.xml были добавлены строки с указанием манифеста
+<pre>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.2.0</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>ru.spbstu.telematics.java.App</mainClass>
+              <addClasspath>true</addClasspath>
+              <addBuildEnvironmentEntries>true</addBuildEnvironmentEntries>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</pre>
+# Для компиляции и запуска программы использовались следующие команды:
+<pre><code class="shell">
+$ direnv allow
+$ test -d ./build && unlink ./build; guix build --file=guix.scm --root=build
+$ java ru.spbstu.telematics.java.Main SOURCES... DESTINATION
+</code></pre>
+
+h1. Результаты работы программы
+
+Ниже представлен результат запуска программы без указания аргументов командной строки.  По умолчанию программа выводит справку об эксплуатации.
+<pre><code class="shell">
+$ java ru.spbstu.telematics.java.Main asdf
+Usage: java -jar ru.spbstu.telematics.java.Main asdf SOURCE... DESTINATION
+</code></pre>
+
+Ниже представлен результат запуска программа с указанием 2 путей.  В этом случае программа переименовывает файл по первому пути во второй, переписывая файл по второму пути, если он существует.
+<pre><code class="shell">
+$ touch a b
+$ java ru.spbstu.telematics.java.Main a b
+$ ls
+b
+</code></pre>
+
+Ниже представлен результат запуска программа с указанием 5 путей.  В этом случае программа передвигает все файлы кроме последнего в папку по последнему указанному пути.
+<pre><code class="shell">
+$ touch a b c d e
+$ mkdir dir
+$ java ru.spbstu.telematics.java.Main a b c d e dir
+$ ls dir
+a b c d e
+</code></pre>
+
+h1. Исходный код
+
+Ссылка на репозиторий: [[https://github.com/martinmake/java-labs-01]]
